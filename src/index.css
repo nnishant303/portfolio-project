@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --font-rajdhani: "Rajdhani", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+/* Global body font */
+/* html {
+  scroll-behavior: auto;
+} */
+
+body {
+  font-family: var(--font-rajdhani);
+  background: #000 !important;
+}
