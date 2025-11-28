@@ -40,7 +40,7 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section className="w-full pt-2 pb-6 md:pt-4 md:pb-20 lg:-mt-40 flex flex-col items-center overflow-hidden relative">
+    <section className="w-full pt-2 pb-6 md:pt-4 md:pb-20 lg:-mt-40 flex flex-col items-center overflow-hidden relative bottom-[200px]">
 
       {/* IMAGE */}
       <motion.img
