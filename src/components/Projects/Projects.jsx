@@ -192,7 +192,7 @@ const Projects = () => {
   const P = projects[activeIndex];
 
   return (
-    <section className="relative  top-[100px] bg-black text-white font-rajdhani overflow-hidden  md:h-[2900px]  sm:h-[2900px]" id="projects">
+    <section className="relative lg:top-50 bg-black text-white font-rajdhani overflow-hidden  md:h-[2900px] " id="projects">
       {/* HEADER - Outside pinned area so it scrolls up */}
       <div className="text-center pt-10 pb-2 px-4">
         <h2 className="text-5xl md:text-7xl font-bold">Projects</h2>
@@ -288,6 +288,8 @@ const Projects = () => {
           </motion.div>
         </div>
       </div>
+
+      
 
 
 

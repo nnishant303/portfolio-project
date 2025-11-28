@@ -6,7 +6,7 @@ const AboutMe = () => {
     return (
         <section
             id="about"
-            className="w-full pt-5 pb-10 md:pt-10 md:pb-20 text-white px-6 relative overflow-hidden"
+            className="w-full pt-5 pb-10 md:pt-10 md:pb-20 text-white px-6 relative lg:top-25 overflow-hidden"
         >
             {/* Top Header */}
             <div className="flex flex-col items-center mb-16">
