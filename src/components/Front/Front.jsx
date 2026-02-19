@@ -72,7 +72,8 @@ const Front = () => {
 
   return (
     <motion.section
-      className="min-h-[90vh] -mt-10 flex flex-col items-center justify-center text-center px-4 relative"
+      id="home"
+      className="scroll-mt-28 min-h-[88vh] md:min-h-[90vh] flex flex-col items-center justify-center text-center px-4 py-6 relative"
       initial="hidden"
       animate="visible"
       variants={containerVariants}

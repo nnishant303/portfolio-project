@@ -4,7 +4,10 @@ import { FiMail, FiSend } from "react-icons/fi";
 
 const Contact = () => {
   return (
-    <section className="py-10 md:py-20 w-full text-white relative overflow-hidden" id="contact">
+    <section
+      id="contact"
+      className="scroll-mt-28 py-16 md:py-24 w-full text-white relative overflow-hidden"
+    >
 
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">

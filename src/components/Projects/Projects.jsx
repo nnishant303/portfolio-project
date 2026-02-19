@@ -145,17 +145,18 @@ const ScrollCard = ({ project }) => (
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
-  const leftRef = useRef(null);
+  const trackRef = useRef(null);
 
   useEffect(() => {
     const total = projects.length;
+    const steps = Math.max(total - 1, 0);
     const container = containerRef.current;
-    const left = leftRef.current;
+    const track = trackRef.current;
 
-    if (!container || !left) return;
+    if (!container || !track) return;
 
     ScrollTrigger.killAll();
-    gsap.killTweensOf(left);
+    gsap.killTweensOf(track);
 
     let mm = gsap.matchMedia();
 
@@ -164,12 +165,12 @@ const Projects = () => {
         scrollTrigger: {
           trigger: container,
           start: "top top",
-          end: `+=${(total - 2) * window.innerHeight}`,
+          end: `+=${steps * window.innerHeight}`,
           scrub: 1.5,
           pin: true,
           anticipatePin: 1,
           onUpdate: (self) => {
-            let idx = Math.round(self.progress * (total - 1));
+            let idx = Math.round(self.progress * steps);
             if (idx < 0) idx = 0;
             if (idx > total - 1) idx = total - 1;
             setActiveIndex(idx);
@@ -177,8 +178,8 @@ const Projects = () => {
         },
       });
 
-      timeline.to(left, {
-        y: -(total - 1) * window.innerHeight,
+      timeline.to(track, {
+        y: -steps * window.innerHeight,
         ease: "none",
       });
     });
@@ -192,9 +193,12 @@ const Projects = () => {
   const P = projects[activeIndex];
 
   return (
-    <section className="relative lg:top-50 bg-black text-white font-rajdhani overflow-hidden  md:h-[2900px] " id="projects">
+    <section
+      id="projects"
+      className="scroll-mt-28 relative w-full py-16 md:py-24 bg-black text-white font-rajdhani overflow-hidden"
+    >
       {/* HEADER - Outside pinned area so it scrolls up */}
-      <div className="text-center pt-10 pb-2 px-4">
+      <div className="text-center pb-6 md:pb-8 px-4">
         <h2 className="text-5xl md:text-7xl font-bold">Projects</h2>
         <p className="text-gray-400 tracking-[0.2em] mt-4 text-sm">
           FEATURED CASE STUDIES
@@ -206,13 +210,12 @@ const Projects = () => {
         <div className="flex flex-col lg:flex-row gap-10 px-6 max-w-7xl mx-auto">
 
           {/* LEFT SCROLL TRACK (Desktop) / VERTICAL STACK (Mobile) */}
-          <div
-            ref={leftRef}
-            className="w-full lg:w-[55%] relative h-auto lg:h-[400vh]"
-          // style={{ height: window.innerWidth >= 1024 ? `${(projects.length - 1) * 100}vh` : 'auto' }}
-          >
-            <div className="lg:absolute top-0 left-0 right-0 flex flex-col gap-10 lg:gap-0">
-              {projects.map((p, index) => (
+          <div className="w-full lg:w-[55%] relative h-auto lg:h-screen lg:overflow-hidden">
+            <div
+              ref={trackRef}
+              className="lg:absolute top-0 left-0 right-0 flex flex-col gap-10 lg:gap-0"
+            >
+              {projects.map((p) => (
                 <div key={p.id} className="lg:h-screen flex flex-col gap-2 lg:block mb-12 lg:mb-0">
 
                   <ScrollCard project={p} />
@@ -324,4 +327,3 @@ const Projects = () => {
 };
 
 export default Projects;
-// Yaha par aana

@@ -12,7 +12,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full mt-32 pb-10 flex flex-col items-center justify-center text-center">
+    <footer className="w-full mt-16 md:mt-20 pb-10 flex flex-col items-center justify-center text-center">
 
       {/* SOCIAL ICONS */}
       <div className="flex items-center gap-8 mb-6">

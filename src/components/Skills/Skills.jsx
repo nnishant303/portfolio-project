@@ -38,9 +38,14 @@ const skills = [
   { name: "Kubernetes", icon: <SiKubernetes className="text-blue-500" /> },
 ];
 
+const inViewOnce = { once: true, amount: 0.25 };
+
 const Skills = () => {
   return (
-    <section className="w-full pt-2 pb-6 md:pt-4 md:pb-20 lg:-mt-40 flex flex-col items-center overflow-hidden relative lg:bottom-20">
+    <section
+      id="skills"
+      className="scroll-mt-28 w-full py-16 md:py-24 flex flex-col items-center overflow-hidden relative"
+    >
 
       {/* IMAGE */}
       <motion.img
@@ -49,6 +54,7 @@ const Skills = () => {
         className="w-[280px] md:w-[450px] opacity-90 mb-10 md:mb-15"
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
+        viewport={inViewOnce}
         transition={{ duration: 0.8 }}
       />
 
@@ -83,6 +89,7 @@ const Skills = () => {
             key={skill.name}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={inViewOnce}
             transition={{ delay: i * 0.05 }}
             className="px-4 py-2 md:px-5 md:py-2 rounded-xl bg-white/5 border border-white/10
               text-white font-rajdhani tracking-wide text-xs md:text-sm flex items-center gap-2

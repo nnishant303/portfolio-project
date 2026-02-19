@@ -3,29 +3,33 @@ import { motion } from "framer-motion";
 
 const timeline = [
   {
-    year: "2025 — 2029",
+    year: "2021 - 2025",
     title: "Bachelor in Computer Science and Engineering",
-    institute: "Bangladesh University of Business and Technology (BUBT)",
+    institute: "Geetanjali Institute of Technical Studies",
     result: null,
   },
   {
-    year: "2021 — 2025",
-    title: "Diploma in Computer Science & Technology",
-    institute: "Feni Computer Institute",
-    result: "CGPA: 3.58 out of 4",
+    year: "2020-2021",
+    title: "Grade 12 - Senior Secondary School Certificate (SSC)",
+    institute: "SJPS School, Nathdwara",
+    result: "94%",
   },
   {
-    year: "2020",
-    title: "Secondary School Certificate (SSC)",
-    institute: "Feni Central High School",
-    result: "GPA: 5.00 out of 5.00",
+    year: "2018-2019",
+    title: "Grade 10 - Senior Secondary School Certificate (SSC)",
+    institute: "SJPS School, Nathdwara",
+    result: "87%",
   },
 ];
 
+const inViewOnce = { once: true, amount: 0.25 };
+
 const Education = () => {
   return (
-    <section className="relative py-10 md:py-20 text-white font-rajdhani overflow-hidden">
-
+    <section
+      id="education"
+      className="scroll-mt-28 relative w-full py-16 md:py-24 text-white font-rajdhani overflow-hidden"
+    >
       {/* ------- BACKGROUND BIG TEXT ------- */}
       <h1 className="absolute top-10 left-1/2 -translate-x-1/2 text-[100px] md:text-[240px] font-bold text-white/5 tracking-wide select-none">
         EDUCATION
@@ -36,6 +40,7 @@ const Education = () => {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={inViewOnce}
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-6xl font-bold"
         >
@@ -56,20 +61,18 @@ const Education = () => {
 
       {/* ------- TIMELINE ------- */}
       <div className="relative mt-16 md:mt-20 max-w-4xl mx-auto px-4">
-
         {/* Center vertical purple line */}
         <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-purple-600/40 -translate-x-1/2"></div>
 
         {timeline.map((item, i) => (
           <motion.div
-            key={i}
+            key={item.year}
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: i * 0.2 }}
-            viewport={{ once: true }}
+            viewport={inViewOnce}
             className="relative flex flex-col items-center text-center mb-20 md:mb-28"
           >
-
             {/* Dot */}
             <div className="w-5 h-5 md:w-6 md:h-6 rounded-full border-2 border-purple-500 bg-black z-10"></div>
 
@@ -80,7 +83,7 @@ const Education = () => {
 
             {/* Title */}
             <h3 className="mt-4 md:mt-6 text-lg md:text-2xl font-bold tracking-wide px-2">
-              🎓 {item.title}
+              {item.title}
             </h3>
 
             {/* Institute */}
@@ -95,11 +98,9 @@ const Education = () => {
                 {item.result}
               </div>
             )}
-
           </motion.div>
         ))}
       </div>
-
     </section>
   );
 };
